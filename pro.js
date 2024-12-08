@@ -88,10 +88,12 @@ function remove(index) {
     </div>`;
     toastElement.innerHTML = toastDesign
   }
-  removealerttoast()
-  setTimeout(function () {
-    toast.remove();
-}, 1000);
+  removealerttoast ()
+  setTimeout (function removetoast() {var toastDesign =``
+    toastElement.innerHTML = toastDesign
+    
+  },1000);
+  
 
 
 }
@@ -109,7 +111,7 @@ function edit(index) {
   WebsiteLink.value = editobject.link
   mainbtn.innerHTML = ("Edit")
   selectedindex = index
-  toast()
+  
 }
 
 function Update() {
@@ -141,10 +143,11 @@ function toast() {
     <strong class="me-auto text-capitalize">Added new link</strong>
     </div>`;
     toastElement.innerHTML = toastDesign
-    setTimeout(function () {
-      toast.remove();
-  }, 1000);
-  
+    setTimeout (function removetoast() {var toastDesign =``
+      toastElement.innerHTML = toastDesign
+      
+    },1000);
+    
   
   }
   else if (mainbtn.innerText === 'Edit') {
@@ -154,18 +157,16 @@ function toast() {
     <strong class="me-auto text-capitalize">Edit link</strong>
     </div>`;
     toastElement.innerHTML = toastDesign
-    setTimeout(function () {
-      toast.remove();
-  }, 1000);
-  
+   
+    setTimeout (function removetoast() {var toastDesign =``
+      toastElement.innerHTML = toastDesign
+      
+    },1000);
+    
   
   }
   }
 
 
-  setTimeout(function () {
-    toast.remove();
-}, 1000);
-
-
+  
 
