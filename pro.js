@@ -78,7 +78,7 @@ function remove(index) {
   weblist.splice(index, 1)
 
   readwebsite()
-  function removetoast () {
+  function removealerttoast () {
     
  
   var toastDesign =
@@ -88,7 +88,12 @@ function remove(index) {
     </div>`;
     toastElement.innerHTML = toastDesign
   }
-  removetoast()
+  removealerttoast()
+  setTimeout(function () {
+    toast.remove();
+}, 1000);
+
+
 }
 
 function clear() {
@@ -136,6 +141,11 @@ function toast() {
     <strong class="me-auto text-capitalize">Added new link</strong>
     </div>`;
     toastElement.innerHTML = toastDesign
+    setTimeout(function () {
+      toast.remove();
+  }, 1000);
+  
+  
   }
   else if (mainbtn.innerText === 'Edit') {
     var toastDesign =
@@ -144,11 +154,18 @@ function toast() {
     <strong class="me-auto text-capitalize">Edit link</strong>
     </div>`;
     toastElement.innerHTML = toastDesign
+    setTimeout(function () {
+      toast.remove();
+  }, 1000);
+  
+  
   }
   }
 
 
-
+  setTimeout(function () {
+    toast.remove();
+}, 1000);
 
 
 
