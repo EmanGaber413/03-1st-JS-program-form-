@@ -28,18 +28,23 @@ function mainbtnapp() {
 
 function createnewlink() {
   // event.preventDefault();
-  var websiteObject =
-  {
-    name: Websitename.value,
-    link: WebsiteLink.value
-  };
-  weblist.push(websiteObject);
+  var isValidateSuccess = validationLink();
+  if(isValidateSuccess == true){
+    var websiteObject =
+    {
+      name: Websitename.value,
+      link: WebsiteLink.value
+    };
+    weblist.push(websiteObject);
+  
+  
+    readwebsite();
+    Clear();
+    toast();
+  }
 
-
-  readwebsite();
-  clear();
-  toast()
-
+  
+  
 }
 
 // console.log(weblist);
@@ -72,8 +77,12 @@ function readwebsite() {
 
   cardView.innerHTML = HTMLCollectionwebsite;
   toast()
+  validationLink() 
+  
+  
 
 }
+
 function remove(index) {
   weblist.splice(index, 1)
 
@@ -98,11 +107,9 @@ function remove(index) {
 
 }
 
-function clear() {
-
-
-  Websitename.value = ``
-  WebsiteLink.value = ``
+function Clear() {
+  WebsiteLink.value=''
+  Websitename.value=''
 }
 
 function edit(index) {
@@ -165,8 +172,26 @@ function toast() {
     
   
   }
+
+
   }
 
 
+function validationLink() {
+    var regx = /https:\/\/[a-zA-Z]{3,}\.com/g ;
+    if (WebsiteLink.value===''||!regx.test(WebsiteLink.value)) {
+       WebsiteLink.classList.add('shadow-danger');
+       var val =
+       `<div class="position-fixed top-0 end-0 p-3 bg-danger text-white border-1 rounded-2" >
   
-
+       <strong class="me-auto text-capitalize">Not Validate (Erorr)</strong>
+       </div>`;
+       toastElement.innerHTML = val;
+   
+       setTimeout (function removetoast() {var val =``
+           toastElement.innerHTML = val;
+        },1000);
+       return false;
+    }
+    return true;
+}
